@@ -38,6 +38,15 @@ let totalRevneue = ordersWithFee.reduce((total, amount) => total + amount, 0);
 
 console.log("Total revneue is: $" + totalRevneue);
 
+// SORT
+var sortedAmounts = orderAmounts.sort()
+
+console.log(sortedAmounts)
+
+// reverse
+let reverseAmount = orderAmounts.reverse()
+
+console.log(reverseAmount)
 
 //indexof
 console.log(array.indexOf("Volunteer"));
