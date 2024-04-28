@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Location Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map { height: 400px; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free"></script> <!-- For drawing the route -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> <!-- For making HTTP requests -->
+
+    <script>
+        // Initialize Leaflet map
+        const map = L.map('map').setView([0, 0], 2);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Example donator and volunteer locations (replace with actual data)
+        const donatorLocation = [11.932175952576618, 79.80788165819784]; // Donator location
+        const volunteerLocation = [11.936453465448114, 79.8077577023009]; // Volunteer location
+
+        // Add markers for donator and volunteer
+        L.marker(donatorLocation).addTo(map).bindPopup('Donator');
+        L.marker(volunteerLocation).addTo(map).bindPopup('Volunteer');
+
+        // Fetch route between donator and volunteer using OpenRouteService API
+        const routeUrl = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf62482c65f58f47164b9db3d905d0c32dd57c&start=${donatorLocation[1]},${donatorLocation[0]}&end=${volunteerLocation[1]},${volunteerLocation[0]}`;
+        axios.get(routeUrl)
+            .then(response => {
+                const route = response.data.features[0].geometry.coordinates.map(coordinate => [coordinate[1], coordinate[0]]);
+                L.polyline(route, {color: 'blue'}).addTo(map);
+            })
+            .catch(error => {
+                console.error('Error fetching route:', error);
+            });
+    </script>
+</body>
+</html>
+<!-- 
+        // Example donator and volunteer locations (replace with actual data)
+        const donatorLocation = [11.932175952576618, 79.80788165819784]; // Donator location
+        const volunteerLocation = [11.936453465448114, 79.8077577023009]; // Volunteer location
+ -->

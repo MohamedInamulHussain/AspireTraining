@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate Food - Food Donation App</title>
+  <link rel="stylesheet" href="donateFood.css">
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>Food Donation App</h1>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#">About Us</a>
+      <a href="#" ID="DONATE">Donate Food</a>
+      <a href="volunteer.html">Volunteer</a>
+      <a href="#">Request Food</a>
+    </div>
+  </div>
+  <center>
+    <div class="container">
+      <div class="formContainer">
+
+        <form id="loginForm" class="form-input">
+
+          <h2>Welcome</h2>
+          <h5>Login to your account</h5>
+          <br>
+          <!-- <label for="email">Email:</label><br> -->
+          <input type="email" id="email" placeholder="Email" name="email" required><br><br>
+          <!-- <label for="password">Password:</label><br> -->
+          <input type="password" id="password" name="password" placeholder="Password" required>
+          <br><br>
+          <button type="submit" class="btn">Login</button>
+          <p>Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+        </form>
+
+
+        <form id="signupForm" class="form-input" style="display:none;">
+          <h2>Signup</h2>
+          <h5>Enter your details</h5>
+          <input type="text" id="newName" name="newName" placeholder="Name" required>
+
+          <input type="email" id="newEmail" name="newEmail" placeholder="Email" required>
+
+          <input type="number" id="newMobile" name="newMobile" placeholder="Mobile Number" required>
+
+          <input type="password" id="newPassword" name="newPassword" placeholder="Password" required>
+          <button type="submit" class="btn">Sign Up</button>
+          <p>Don't have an account? <a href="#" id="showLogin">Login</a></p>
+        </form>
+      </div>
+
+    </div>
+    <div id='bg'></div>
+  </center>
+  <div id="donationDetails" style="display:none;">
+    <center>
+      <!-- <h2>Donation Details</h2> -->
+    </center>
+    <!-- <img id=""  src="./ui/edited/2.png"> -->
+    <div id="blobDonate">
+      <div id="netralizer">
+      <img id="rightHand" src="./ui/edited/hand.png">
+      <img id="leftHand" src="./ui/edited/leftHand.png">
+      </div>
+    </div>
+    <div id="textSection" style="opacity: 100%;">
+      <h1>INDIVIDUAL DONATION</h1>
+      <p style="text-align: center; padding-right: 10px;">Join Us in Making a Difference, we believe that every act of kindness, no matter how small, has the power to make a significant impact. By contributing to our cause, you can be a part of  something bigger a movement dedicated to alleviating hunger and providing hope to those in need.
+      </p>
+      
+      <div id="textbox">
+        <h4>Why Donate?</h4>
+        <p>
+        Millions of individuals and families around the world struggle with food insecurity every day. Your donation can help provide nutritious meals to those who are most vulnerable, offering them not only sustenance but also dignity and hope for a better tomorrow. With your support, we can make a tangible difference in the lives of countless individuals, one meal at a time.
+      </p>
+      </div>
+      <div id="textbox">
+        <h4>Impact of Your Donation</h4>
+        
+        <p>Your generosity enables us to reach more individuals and families in need, providing them with access to essential food supplies and resources. From children facing hunger to seniors struggling to make ends meet, your donation has the power to transform lives and build stronger, more resilient communities. Together, we can create a world where no one has to go to bed hungry.
+        </p>
+        </div>
+       
+    </div>
+    <div class="options">
+      <center><div id="dashboard">Dashboard</center>
+      <div id="choice">
+        <div class="box"><div><h3>INDIVIDUAL DONATION</h3></div></div>
+        <div class="box"><div><h3>BULK DONATION</h3></div></div>
+        <div class="box"><div><h3>NGO<br>DETAILS</h3></div></div>
+      </div>
+      <div id="formArea">
+        <div id="round1"></div>
+        <div id="round2"></div>
+  
+        <form id="donationForm" class="form-input">
+  
+          <input type="text" class="tdShrink1" id="foodType" name="foodType" placeholder="  Item Name" required>
+  
+          <input type="number" id="quantity" name="quantity" placeholder="  Quantity" required><br>
+          <div style="display: inline-block;"><label>Cooked Time</label><br>
+            <input type="time" class="tdShrink2" id="timing" name="timing" placeholder="  Cooked Time" required>
+          </div>
+          <div style="display: inline-block;"><label>Pickup Date</label><br>
+            <input type="date" class="tdShrink1" id="pickupDate" name="pickupDate" placeholder="  Pickup Date" required>
+          </div><br>
+          <input type="text" class="tdShrink2" id="locationDetails" name="location" placeholder="  Location"><br>
+          <button id="getLocationButton">Use My Current Location</button>
+          <p id="location"></p>
+        </form>
+        <button type="submit" class="btn">Donate Food</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const loginForm = document.getElementById('loginForm');
+      const signupForm = document.getElementById('signupForm');
+      const donationDetails = document.getElementById('donationDetails');
+      const showSignup = document.getElementById('showSignup');
+      const f = document.querySelector('.container');
+      const getLocationButton = document.getElementById('getLocationButton');
+      var lhand=document.getElementById('leftHand');
+      var lhand=document.getElementById('rightHand');
+      
+      showSignup.addEventListener('click', function (event) {
+        event.preventDefault();
+        loginForm.style.display = 'none';
+        signupForm.style.display = 'block';
+      });
+      showLogin.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        loginForm.style.display = 'block';
+        signupForm.style.display = 'none';
+      });
+      loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        loginForm.style.display = 'none';
+        // signupForm.style.display = 'none';
+        f.style.display = 'none';
+        donationDetails.style.display = 'block';
+
+      });
+
+      getLocationButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        getLocation(); // Call getLocation() when the "Get Location" button is clicked
+      });
+
+      //getting current location
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          alert("Geolocation is not supported by this browser.");
+        }
+      }
+
+      function showPosition(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        document.getElementById("location").innerHTML = "Latitude: " + latitude + "       Longitude: " + longitude;
+      }
+      // signupForm.addEventListener('submit', function(event) {
+      //   event.preventDefault();
+      //   loginForm.style.display = 'none';
+      //   signupForm.style.display = 'none';
+      //   donationDetails.style.display = 'block';
+      // });
+    });
+
+  </script>
+
+</body>
+
+</html>

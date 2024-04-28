@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Volunteer</title>
+	<link rel="stylesheet" href="volunteerStyle.css">
+</head>
+<body>
+	<div class="header">
+    <h1>Food Donation App</h1>
+    <div class="navlinks">
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="donateFood.html">Donate Food</a>
+      <a href="#" id="volunteerLink">Volunteer</a>
+      <a href="#">Request Food</a>
+    </div>
+  </div>
+  <center>
+    <div class="container">
+      <div class="formContainer">
+
+        <form id="loginForm" class="form-input">
+
+          <h2>Welcome</h2>
+          <h5>Login to your account</h5>
+          <br>
+          <!-- <label for="email">Email:</label><br> -->
+          <input type="email" id="email" placeholder="Email" name="email" required><br><br>
+          <!-- <label for="password">Password:</label><br> -->
+          <input type="password" id="password" name="password" placeholder="Password" required>
+          <br><br>
+          <button type="submit" class="btn">Login</button>
+          <p>Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+        </form>
+
+
+        <form id="signupForm" class="form-input" style="display:none;">
+          <h2>Signup</h2>
+          <h5>Enter your details</h5>
+          <input type="text" id="newName" name="newName" placeholder="Name" required>
+
+          <input type="email" id="newEmail" name="newEmail" placeholder="Email" required>
+
+          <input type="number" id="newMobile" name="newMobile" placeholder="Mobile Number" required>
+
+          <input type="password" id="newPassword" name="newPassword" placeholder="Password" required>
+          <button type="submit" class="btn">Sign Up</button>
+          <p>Don't have an account? <a href="#" id="showLogin">Login</a></p>
+        </form>
+      </div>
+    </div>
+    <div id='bg'></div>
+  </center>
+  <div id="volunteerDetails" style="display:block;">
+    <h1>Hi Volunteer</h1>
+    <div id='mainSection'>
+      <div id="innerSection">
+          <div></div>
+          <div></div>
+          <div></div>
+      </div>
+    </div>
+    <div id='volImageSection'></div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const loginForm = document.getElementById('loginForm');
+      const signupForm = document.getElementById('signupForm');
+      const VolunteerDetails = document.getElementById('VolunteerDetails');
+      const showSignup = document.getElementById('showSignup');
+      const f = document.querySelector('.container');
+    
+      
+      showSignup.addEventListener('click', function (event) {
+        event.preventDefault();
+        loginForm.style.display = 'none';
+        signupForm.style.display = 'block';
+      });
+      showLogin.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        loginForm.style.display = 'block';
+        signupForm.style.display = 'none';
+      });
+      loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        loginForm.style.display = 'none';
+        // signupForm.style.display = 'none';
+        f.style.display = 'none';
+        VolunteerDetails.style.display = 'block';
+
+      });
+  });
+  </script>
+</body>
+</html>
