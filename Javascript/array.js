@@ -18,16 +18,26 @@ console.log(Users);
 //shift && unshift
 Users.shift();
 console.log(Users);
-Users.unshift("ram");
+Users.unshift("Volunteer");
 console.log(Users);
 
 //filter,forEach
 Users.filter(n=> n!==undefined).forEach( n => console.log(n));
 
-//map,filter,reduce
-let numArray = [1,2,3,4,5,6];
-let Total = numArray.filter(n=>n%2===0).map(n => n+2).reduce((a,b) => a+b );
-console.log("Sum is : " + Total);
+// Simulated food delivery orders
+let orderAmounts = [15, 20, 10, 30, 25, 18];
+// filter successful transactions 
+//eg: we can take even amount as successfull transaction
+let successfulOrders = orderAmounts.filter(amount => amount % 2 === 0);
+
+//add delivery fee of $2 to each successful transaction
+let ordersWithFee = successfulOrders.map(amount => amount + 2);
+
+//calculate total reveneue
+let totalRevneue = ordersWithFee.reduce((total, amount) => total + amount, 0);
+
+console.log("Total revneue is: $" + totalRevneue);
+
 
 //indexof
 console.log(array.indexOf("Volunteer"));
