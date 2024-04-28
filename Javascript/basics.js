@@ -1,4 +1,3 @@
-<script>
 
 //dataTypes
 	var ratings=4.5;
@@ -112,5 +111,3 @@
 	}
 
 	checkPassword(null);//if we entered null the output will be "no password entered"
-</script>
-<script type="text/javascript" src="aspire/javascript/function.js"></script>
