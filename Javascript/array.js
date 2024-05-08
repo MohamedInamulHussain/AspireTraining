@@ -24,7 +24,7 @@ console.log(Users);
 //filter,forEach
 Users.filter(n=> n!==undefined).forEach( n => console.log(n));
 
-// Simulated food delivery orders
+// food delivery orders
 let orderAmounts = [15, 20, 10, 30, 25, 18];
 // filter successful transactions 
 //eg: we can take even amount as successfull transaction
