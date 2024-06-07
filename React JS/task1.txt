@@ -1,0 +1,42 @@
+import { useState } from 'react'
+import './App.css'
+import MyComp from './MyComp';
+import Emp from './Emp';
+import { PropPractise } from './PropPractise';
+function App() {
+  const [count, setCount] = useState(0)
+  const[color,setColor]=useState();
+
+  return (
+    <>
+      
+     <h1>React Tasks</h1>
+     <input type='text' placeholder='Enter the color' onChange={(e)=>{setColor(e.target.value)}}></input>
+     <MyComp  colors={color}></MyComp>
+     <h3>2.Add to cart task with label </h3>
+      <div>
+        <label onMouseOver={() => setCount((count) => count + 1)}  ><h4 style={{color:'red',border:'1px solid black'}}>Count will be incremented on hover this text :{count}</h4>  </label>
+      </div>
+       <Emp/>
+       
+       <PropPractise/>
+    </>
+  )
+}
+
+export default App
+
+
+
+import React from "react";
+
+function MyComp(props) {
+    return (
+        <div>
+            <h3 style={{color:props.colors}}>1.Color change of text using Props</h3>
+            
+        </div>
+    );
+}
+
+export default MyComp;

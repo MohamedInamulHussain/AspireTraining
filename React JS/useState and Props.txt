@@ -1,0 +1,40 @@
+Practise useState and Props
+
+import React,{useState} from 'react'
+
+export const PropPractise = (props) => {
+    let [num,setNum]=useState(1);
+    // counter
+    function add(){
+        //   setNum(50);
+        setNum((number)=>{
+            number+=1;
+            return number;
+        });
+    };
+
+    //to show the text from input box
+    let[value,setValue]=useState('sample text');
+    // let change=()=>{
+    //     let a=document.getElementById('inp');
+    //     setValue((val)=>{
+            
+    //             val=a.value;
+    //             return val;
+    //     });
+    // }
+  return (
+    <div>
+        {/* <h1>{props.name}</h1>
+        <h1>{props.age}</h1>
+        <h1>{props.pl}</h1> */}
+        
+        <button onClick={add}>click me</button>
+        <h1>the count:{num}</h1>
+        <input onChange={(e)=>{setValue(e.target.value)}} ></input>
+        <h3>the values are:{value}</h3>
+    </div>
+   
+  )
+}
+
