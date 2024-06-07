@@ -1,0 +1,45 @@
+import React, { useState } from 'react';
+import MyComp from './MyComp';
+function Emp() {
+  const [empName, setEmpName] = useState('');
+  const [location, setLocation] = useState('');
+  const [display, setDisplay] = useState(false);
+
+  const handleDisplay = () => {
+    setDisplay(true);
+  };
+
+  return (
+    <div className="App">
+      <h1>Employee Info</h1>
+      <div className="form">
+        <label>
+          Employee Name:
+          <input 
+            type="text" 
+            // value={empName} 
+            onChange={(a) => setEmpName(a.target.value)} 
+          />
+        </label>
+        <label>
+          Location:
+          <input 
+            type="text" 
+            value={location} 
+            onChange={(e) => setLocation(e.target.value)} 
+          />
+        </label>
+        <button onClick={handleDisplay}>Display Names</button>
+      </div>
+      {display && (
+        <div className="display">
+          <h2>Employee Name: {empName}</h2>
+          <h2>Location: {location}</h2>
+        </div>
+        
+      )}
+    </div>
+  );
+}
+
+export default Emp;
